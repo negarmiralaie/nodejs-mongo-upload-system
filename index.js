@@ -6,7 +6,6 @@ const fs = require('fs');
 const cors = require('cors');
 const http = require('http');
 const connectDB = require('./config/db');
-// const helmet = require('helmet');
 //-------------------------------> END OF IMPORTS <-------------------------------
 
 dotenv.config();
@@ -39,7 +38,7 @@ app.use('/', express.static('public'));
 // Routes
 app.use('/', require('./routers/index'));
 
-app.use((err, req, res, next) => {  //! ////////////////////
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({
       message: err.message,
@@ -47,7 +46,7 @@ app.use((err, req, res, next) => {  //! ////////////////////
     });
 });
 
-const server = http.createServer(app);  //! //////////////////
+const server = http.createServer(app);
 
 server.listen(PORT, () => {
   console.log('Server started listening on : ', server.address());
